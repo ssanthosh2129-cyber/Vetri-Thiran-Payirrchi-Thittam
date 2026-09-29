@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}
+Jewelry Budget Planner — PocketSmart
+{% endblock %}
+
+
+{% block content %}
+
+<section class="planner">
+
+    <div class="page-head compact">
+
+        <p class="eyebrow">
+            JEWELRY BUDGET
+        </p>
+
+        <h1>
+            Jewelry Budget Planner
+        </h1>
+
+        <p>
+            Get occasion-based jewelry
+            recommendations in INR.
+            You can optionally upload
+            an outfit image.
+        </p>
+
+    </div>
+
+
+    <form
+        id="jewelryForm"
+        class="form-grid"
+        enctype="multipart/form-data"
+    >
+
+        <label>
+
+            Total Budget (₹)
+
+            <input
+                name="total_budget"
+                type="number"
+                min="1"
+                step="0.01"
+                required
+            >
+
+        </label>
+
+
+        <label>
+
+            Occasion
+
+            <input
+                name="occasion"
+                placeholder="Wedding, anniversary..."
+                required
+            >
+
+        </label>
+
+
+        <label class="wide">
+
+            Preferences
+
+            <textarea
+                name="preferences"
+                rows="3"
+                placeholder="Metal, color, style, etc."
+            ></textarea>
+
+        </label>
+
+
+        <label class="wide">
+
+            Outfit Image (optional)
+
+            <input
+                name="image"
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+            >
+
+            <span class="hint">
+                Maximum 5 MB.
+                JPG, PNG or WEBP.
+            </span>
+
+        </label>
+
+
+        <div class="wide">
+
+            <button
+                class="btn"
+                type="submit"
+            >
+                Generate Recommendations
+            </button>
+
+        </div>
+
+    </form>
+
+
+    <div id="result"></div>
+
+</section>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+
+bindPlanner(
+    "jewelryForm",
+    "/jewelry-budget",
+    "form"
+);
+
+</script>
+
+{% endblock %}

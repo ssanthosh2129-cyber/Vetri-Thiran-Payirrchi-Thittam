@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}
+Party Budget Planner — PocketSmart
+{% endblock %}
+
+
+{% block content %}
+
+<section class="planner">
+
+    <div class="page-head compact">
+
+        <p class="eyebrow">
+            PARTY BUDGET
+        </p>
+
+        <h1>
+            Party Budget Planner
+        </h1>
+
+        <p>
+            Build a practical plan for
+            your celebration without
+            losing track of the total budget.
+        </p>
+
+    </div>
+
+
+    <form
+        id="partyForm"
+        class="form-grid"
+    >
+
+        <label>
+
+            Total Budget (₹)
+
+            <input
+                name="total_budget"
+                type="number"
+                min="1"
+                step="0.01"
+                required
+            >
+
+        </label>
+
+
+        <label>
+
+            Party Type
+
+            <input
+                name="party_type"
+                placeholder="Birthday Party"
+                required
+            >
+
+        </label>
+
+
+        <label>
+
+            Number of Guests
+
+            <input
+                name="num_guests"
+                type="number"
+                min="1"
+                required
+            >
+
+        </label>
+
+
+        <label>
+
+            Venue Preference
+
+            <input
+                name="venue_preference"
+                placeholder="Hall, home, outdoor..."
+            >
+
+        </label>
+
+
+        <label>
+
+            Food Preference
+
+            <input
+                name="food_preference"
+                placeholder="Veg / non-veg / buffet..."
+            >
+
+        </label>
+
+
+        <label>
+
+            Entertainment
+
+            <input
+                name="entertainment"
+                placeholder="Music, games..."
+            >
+
+        </label>
+
+
+        <label class="wide">
+
+            Special Requirements
+
+            <textarea
+                name="special_requirements"
+                rows="4"
+            ></textarea>
+
+        </label>
+
+
+        <div class="wide">
+
+            <button
+                class="btn"
+                type="submit"
+            >
+                Generate Recommendations
+            </button>
+
+        </div>
+
+    </form>
+
+
+    <div id="result"></div>
+
+</section>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+
+bindPlanner(
+    "partyForm",
+    "/party-budget",
+    "json"
+);
+
+</script>
+
+{% endblock %}

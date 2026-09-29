@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}
+Create Account — PocketSmart
+{% endblock %}
+
+
+{% block content %}
+
+<section class="auth">
+
+    <div class="auth-card">
+
+        <h1>
+            Create Your Account
+        </h1>
+
+        <p>
+            Save your budget plans and
+            recommendation history.
+        </p>
+
+
+        <form id="registerForm">
+
+            <label>
+
+                Username
+
+                <input
+                    name="username"
+                    minlength="3"
+                    required
+                >
+
+            </label>
+
+
+            <label>
+
+                Email
+
+                <input
+                    name="email"
+                    type="email"
+                    required
+                >
+
+            </label>
+
+
+            <label>
+
+                Password
+
+                <input
+                    name="password"
+                    type="password"
+                    minlength="6"
+                    required
+                >
+
+            </label>
+
+
+            <button
+                class="btn"
+                type="submit"
+            >
+                Create Account
+            </button>
+
+
+            <div
+                id="formMessage"
+                class="message"
+            ></div>
+
+        </form>
+
+
+        <p class="small">
+
+            Already have an account?
+
+            <a href="/login">
+                Sign in
+            </a>
+
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+
+bindAuthForm(
+    "registerForm",
+    "/api/register",
+    "/login"
+);
+
+</script>
+
+{% endblock %}

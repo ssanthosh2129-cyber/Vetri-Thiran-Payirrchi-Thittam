@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard — PocketSmart
+{% endblock %}
+
+
+{% block content %}
+
+<section class="page-head">
+
+    <p class="eyebrow">
+        DASHBOARD
+    </p>
+
+    <h1>
+        Hello, {{ user.username }}.
+    </h1>
+
+    <p>
+        Choose a planner and turn your
+        budget into an actionable
+        recommendation.
+    </p>
+
+</section>
+
+
+<div class="cards three">
+
+    <article>
+
+        <div class="icon">
+            ⌂
+        </div>
+
+        <h2>
+            Home Budget
+        </h2>
+
+        <p>
+            Furniture, lighting, fans
+            and rooms.
+        </p>
+
+        <a
+            class="btn"
+            href="/home-planner"
+        >
+            Open Planner
+        </a>
+
+    </article>
+
+
+    <article>
+
+        <div class="icon">
+            ★
+        </div>
+
+        <h2>
+            Party Budget
+        </h2>
+
+        <p>
+            Venue, catering,
+            decoration and more.
+        </p>
+
+        <a
+            class="btn"
+            href="/party-planner"
+        >
+            Open Planner
+        </a>
+
+    </article>
+
+
+    <article>
+
+        <div class="icon">
+            ◇
+        </div>
+
+        <h2>
+            Jewelry Budget
+        </h2>
+
+        <p>
+            Occasion and outfit-aware
+            suggestions.
+        </p>
+
+        <a
+            class="btn"
+            href="/jewelry-planner"
+        >
+            Open Planner
+        </a>
+
+    </article>
+
+</div>
+
+
+<section class="panel">
+
+    <div class="panel-head">
+
+        <h2>
+            Recent Activity
+        </h2>
+
+        <a href="/history">
+            View All Recommendation History
+        </a>
+
+    </div>
+
+
+    {% if history %}
+
+        <div class="history-list">
+
+            {% for h in history %}
+
+                <div>
+
+                    <strong>
+                        {{ h.recommendation_type|title }}
+                        Budget Plan
+                    </strong>
+
+                    <span>
+                        {{ h.created_at[:10] }}
+                    </span>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <p>
+            No recommendations yet.
+            Start with one of the planners above.
+        </p>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

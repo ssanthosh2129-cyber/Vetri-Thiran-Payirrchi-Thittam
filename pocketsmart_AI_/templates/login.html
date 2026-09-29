@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}
+Login — PocketSmart
+{% endblock %}
+
+
+{% block content %}
+
+<section class="auth">
+
+    <div class="auth-card">
+
+        <h1>
+            Welcome Back
+        </h1>
+
+        <p>
+            Sign in to continue planning
+            your budget.
+        </p>
+
+
+        <form id="loginForm">
+
+            <label>
+
+                Username
+
+                <input
+                    name="username"
+                    required
+                    autocomplete="username"
+                >
+
+            </label>
+
+
+            <label>
+
+                Password
+
+                <input
+                    name="password"
+                    type="password"
+                    required
+                    autocomplete="current-password"
+                >
+
+            </label>
+
+
+            <button
+                class="btn"
+                type="submit"
+            >
+                Sign In
+            </button>
+
+
+            <div
+                id="formMessage"
+                class="message"
+            ></div>
+
+        </form>
+
+
+        <p class="small">
+
+            Don't have an account?
+
+            <a href="/register">
+                Create Account
+            </a>
+
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+
+bindAuthForm(
+    "loginForm",
+    "/api/login",
+    "/dashboard"
+);
+
+</script>
+
+{% endblock %}

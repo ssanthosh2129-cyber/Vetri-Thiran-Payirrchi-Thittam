@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}
+Recommendation History — PocketSmart
+{% endblock %}
+
+
+{% block content %}
+
+<section class="page-head">
+
+    <p class="eyebrow">
+        YOUR HISTORY
+    </p>
+
+    <h1>
+        Recommendation History
+    </h1>
+
+    <p>
+        Your saved PocketSmart
+        budget plans.
+    </p>
+
+</section>
+
+
+<div class="history-grid">
+
+    {% if history %}
+
+        {% for h in history %}
+
+            <article class="history-card">
+
+                <div class="badge">
+
+                    {{ h.recommendation_type|title }}
+
+                </div>
+
+
+                <h3>
+
+                    {{ h.recommendation_type|title }}
+                    Budget Plan
+
+                </h3>
+
+
+                <p>
+
+                    Created
+                    {{ h.created_at[:19].replace('T', ' ') }}
+
+                </p>
+
+
+                <details>
+
+                    <summary>
+                        View input
+                    </summary>
+
+                    <pre>
+{{ h.input_data }}
+                    </pre>
+
+                </details>
+
+
+                <a
+                    class="btn smallbtn"
+                    href="{{ '/' + h.recommendation_type + '-planner' }}"
+                >
+                    Create another
+                </a>
+
+            </article>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="panel">
+
+            <p>
+                No saved recommendations yet.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

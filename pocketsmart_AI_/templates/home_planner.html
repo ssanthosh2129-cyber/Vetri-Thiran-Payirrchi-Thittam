@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home Interior Budget Planner — PocketSmart
+{% endblock %}
+
+
+{% block content %}
+
+<section class="planner">
+
+    <div class="page-head compact">
+
+        <p class="eyebrow">
+            HOME BUDGET
+        </p>
+
+        <h1>
+            Home Interior Budget Planner
+        </h1>
+
+        <p>
+            Tell PocketSmart what you need
+            and receive an INR budget
+            breakdown.
+        </p>
+
+    </div>
+
+
+    <form
+        id="homeForm"
+        class="form-grid"
+    >
+
+        <label>
+
+            Total Budget (₹)
+
+            <input
+                name="total_budget"
+                type="number"
+                min="1"
+                step="0.01"
+                required
+            >
+
+        </label>
+
+
+        <label>
+
+            Number of Lights
+
+            <input
+                name="num_lights"
+                type="number"
+                min="0"
+                value="0"
+            >
+
+        </label>
+
+
+        <label>
+
+            Number of Fans
+
+            <input
+                name="num_fans"
+                type="number"
+                min="0"
+                value="0"
+            >
+
+        </label>
+
+
+        <label>
+
+            Number of Furniture Pieces
+
+            <input
+                name="num_furniture"
+                type="number"
+                min="0"
+                value="0"
+            >
+
+        </label>
+
+
+        <label>
+
+            Number of Dining Tables
+
+            <input
+                name="num_dining_tables"
+                type="number"
+                min="0"
+                value="0"
+            >
+
+        </label>
+
+
+        <label>
+
+            Rooms
+
+            <input
+                name="rooms"
+                placeholder="Living Room, Kitchen, Bedroom"
+            >
+
+        </label>
+
+
+        <label class="wide">
+
+            Special Requirements or Preferences
+
+            <textarea
+                name="special_requirements"
+                rows="4"
+                placeholder="Any special requirements or preferences..."
+            ></textarea>
+
+        </label>
+
+
+        <div class="wide">
+
+            <button
+                class="btn"
+                type="submit"
+            >
+                Generate Recommendations
+            </button>
+
+        </div>
+
+    </form>
+
+
+    <div id="result"></div>
+
+</section>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+
+bindPlanner(
+    "homeForm",
+    "/home-budget",
+    "json"
+);
+
+</script>
+
+{% endblock %}
